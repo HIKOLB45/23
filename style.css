@@ -1,0 +1,68 @@
+:root {
+    --primary: #00f2ff;
+    --danger: #ff003c;
+    --bg-main: #0a0c10;
+    --sidebar-bg: #0d1117;
+    --card-bg: rgba(22, 27, 34, 0.8);
+    --border: 1px solid #30363d;
+    --font: 'Roboto Mono', monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; outline: none; }
+body { background: var(--bg-main); color: #c9d1d9; font-family: var(--font); overflow: hidden; }
+
+#app { display: flex; height: 100vh; }
+
+/* SIDEBAR */
+.sidebar {
+    width: 260px; background: var(--sidebar-bg); border-right: var(--border);
+    display: flex; flex-direction: column; padding: 20px;
+}
+.logo { font-family: 'Orbitron'; font-weight: 900; color: #fff; margin-bottom: 40px; }
+.logo span { color: var(--primary); }
+.nav-group { font-size: 0.6rem; color: #484f58; margin: 20px 0 10px; letter-spacing: 2px; }
+.nav-btn {
+    background: transparent; border: none; color: #8b949e; text-align: left;
+    padding: 12px; font-family: inherit; font-size: 0.75rem; cursor: pointer; transition: 0.2s;
+}
+.nav-btn:hover, .nav-btn.active { color: var(--primary); background: rgba(0,242,255,0.05); }
+
+/* WORKSPACE */
+.workspace { flex: 1; display: flex; flex-direction: column; }
+.top-bar {
+    height: 60px; border-bottom: var(--border); display: flex; 
+    justify-content: space-between; align-items: center; padding: 0 30px; font-size: 0.7rem;
+}
+
+.main-content { flex: 1; display: grid; grid-template-columns: 450px 1fr; padding: 20px; gap: 20px; }
+
+/* CARDS */
+.glass-card {
+    background: var(--card-bg); border: var(--border); border-radius: 8px; padding: 20px;
+}
+.glass-card header { 
+    font-family: 'Orbitron'; font-size: 0.65rem; color: #8b949e; 
+    margin-bottom: 20px; border-bottom: var(--border); padding-bottom: 10px;
+}
+
+.input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.field label { display: block; font-size: 0.6rem; margin-bottom: 5px; color: #484f58; }
+.field input {
+    width: 100%; background: #010409; border: var(--border); 
+    color: var(--primary); padding: 10px; border-radius: 4px;
+}
+
+/* VIEWPORT */
+.viewport-container { 
+    background: #000; border: var(--border); border-radius: 12px; 
+    position: relative; overflow: hidden;
+}
+#render-target { width: 100%; height: 100%; }
+.viewport-tools { position: absolute; top: 20px; right: 20px; display: flex; gap: 10px; }
+.viewport-tools button {
+    background: rgba(0,0,0,0.5); border: var(--border); color: #fff;
+    padding: 8px 15px; font-size: 0.6rem; cursor: pointer; backdrop-filter: blur(5px);
+}
+
+.highlight { color: var(--primary); font-size: 1.5rem; font-weight: bold; }
+.mt-20 { margin-top: 20px; }
