@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CANOPY_OS PRO // Enterprise Edition</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto+Mono:wght@300;500&display=swap" rel="stylesheet">
+</head>
+<body class="dark-theme">
+    <div id="app">
+        <aside class="sidebar">
+            <div class="logo">NAV_PRO<span>v5</span></div>
+            <nav>
+                <div class="nav-group">ENGINEERING</div>
+                <button class="nav-btn active" onclick="switchTab('design')">DESIGN_UNIT</button>
+                <button class="nav-btn" onclick="switchTab('analytics')">ANALYTICS_AI</button>
+                <button class="nav-btn" onclick="switchTab('materials')">MATERIALS_LOG</button>
+                <div class="nav-group">SYSTEM</div>
+                <button class="nav-btn" onclick="exportProject()">EXPORT_DOCS</button>
+                <button class="nav-btn terminal-trigger" onclick="toggleTerminal()">SYS_TERMINAL</button>
+            </nav>
+            <div class="sys-status">CPU: 12% | RAM: 0.8GB</div>
+        </aside>
+
+        <main class="workspace">
+            <header class="top-bar">
+                <div class="path">PROJECTS / NEW_CANOPY_BETA / <span id="current-op">DESIGN</span></div>
+                <div class="user-meta">ADMIN_USER // HIKOLB45</div>
+            </header>
+
+            <div class="main-content">
+                <section class="params-panel">
+                    <div class="glass-card">
+                        <header>INPUT_PARAMETERS</header>
+                        <div class="input-grid">
+                            <div class="field">
+                                <label>LENGTH (L)</label>
+                                <input type="number" id="inp-l" value="5000" oninput="app.update()">
+                            </div>
+                            <div class="field">
+                                <label>WIDTH (W)</label>
+                                <input type="number" id="inp-w" value="4800" oninput="app.update()">
+                            </div>
+                            <div class="field">
+                                <label>HEIGHT_A</label>
+                                <input type="number" id="inp-ha" value="2500" oninput="app.update()">
+                            </div>
+                            <div class="field">
+                                <label>HEIGHT_B</label>
+                                <input type="number" id="inp-hb" value="2000" oninput="app.update()">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card mt-20">
+                        <header>LIVE_ANALYTICS</header>
+                        <div class="stats-grid">
+                            <div class="stat-box">
+                                <label>TOTAL_MASS</label>
+                                <div id="out-mass">0 kg</div>
+                            </div>
+                            <div class="stat-box">
+                                <label>ESTIMATED_COST</label>
+                                <div id="out-cost" class="highlight">0 UAH</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card mt-20">
+                        <header>AI_VISION_SCANNER</header>
+                        <div class="drop-zone" id="drop-zone">
+                            <span>DRAG & DROP REFERENCE PHOTO</span>
+                            <input type="file" id="file-inp" hidden>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="viewport-container">
+                    <div id="render-target"></div>
+                    <div class="viewport-tools">
+                        <button onclick="toggleWireframe()">WIRE_MODE</button>
+                        <button onclick="resetCamera()">RESET_CAM</button>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <div id="terminal-overlay" class="hidden">
+            <div class="terminal-header">SYSTEM_CONSOLE <button onclick="toggleTerminal()">X</button></div>
+            <div id="terminal-output"></div>
+            <input type="text" id="terminal-input" placeholder="Enter command...">
+        </div>
+    </div>
+
+    <script src="engine.js"></script>
+</body>
+</html>
